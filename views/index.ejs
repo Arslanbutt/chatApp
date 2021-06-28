@@ -14,16 +14,20 @@
  <div class="jumbotron">
  <h1 class="display-4">Send Message</h1>
  <br>
- <input id = "name" class="form-control" placeholder="Name">
+
+ <form action="/" method="post">
+ <input id = "name" class="form-control" placeholder="Name" name="newName"  autocomplete="off">
  <br>
- <textarea id = "message" class="form-control" placeholder="Your Message Here">
+ <textarea id = "message" class="form-control" placeholder="Your Message Here" name="newMessage"  autocomplete="off">
 </textarea>
  <br>
- <button id="send" class="btn btn-success">Send</button>
+ <button type="submit" name="button" id="send" class="btn btn-success">Send</button>
+</form>
  </div>
 
  <% for (item in newListItem){ %>
  <div id="messages">
+   <h2> <%= newListItem[item].name %> </h2>
    <p> <%= newListItem[item].message %> </p>
 </div>
 <% } %>

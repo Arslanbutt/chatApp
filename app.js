@@ -49,27 +49,25 @@ app.get('/',function(req,res){
   });
 });
 
-// app.get('/',function(req,res){
-//   Message.find({},funcion(err,messages){
-//     if(!err){
-//       res.render("index",{
-//         newListItem : items
-//       });
-//     } else {
-//       res.send(err);
-//     }
-//   });{
-//
-//   });
-//   //res.render("index");
-// });
 
 app.post('/',function(req,res){
-  var message = new Message(req.body);
- Message.save((err) =>{
-   if(err)
-     sendStatus(500);
-   res.sendStatus(200);
+  console.log("in post method ");
+  //res.send("post done");
+  let message = req.body.newMessage;
+  let name = req.body.newName;
+  let message1 = new Message({
+    name: name,
+    message : message
+  });
+ message1.save((err) =>{
+   if(err){
+     res.send(err);
+     // sendStatus(500);
+   }else{
+     items.push(message1);
+     res.redirect('/');
+     //res.sendStatus(200);
+   }
  });
 });
 
